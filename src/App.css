@@ -21,6 +21,28 @@
   color: #61dafb;
 }
 
+.App-headline {
+  color: black;
+  font-size: 50px;
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  top: 10%;
+}
+
+.App-jump {
+  position: absolute;
+  top: 10%;
+  right: 10%;
+}
+
+.App-form {
+  text-align: center;
+  width: 100%;
+  position: absolute;
+  top: 25%;
+}
+
 .App-footer{
   display: flex;
   flex-direction: column;
