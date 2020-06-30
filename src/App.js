@@ -27,7 +27,7 @@ class Login extends React.Component {
             userMobile:this.state.userMobile,
             passwd:this.state.passwd
         }
-        fetch('http://localhost:8085/user/login',{
+        fetch('http://www.chewingtogether.com:8085/user/login',{
             // post提交
             method:"POST",
             headers:{
