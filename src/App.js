@@ -43,6 +43,7 @@ class Login extends React.Component {
                 }
                 else{
                     console.log(resdata)
+                    alert("登录成功！")
                     this.props.history.push('Main')
                 }
             })
@@ -66,8 +67,8 @@ class Login extends React.Component {
             <h1>登陆入口</h1>
             手机号码:<input height="20" name = "userMobile" onChange={this.handleChange}/><br/>
             账户密码:<input type="password" height="20" name = "passwd" onChange={this.handleChange}/><br/>
-            <input type="submit" value="提交" className="btn-gradient cyan" onClick={()=>this.userlogin()}/>
-            <input type="reset" value="重置" className="btn-gradient red"/>
+            <button className="btn-gradient red">重置</button>
+            <button className="btn-gradient cyan" onClick={()=>this.userlogin()}>提交</button>
             </div>
 
             <footer className = "App-footer">
