@@ -40,7 +40,7 @@ class Register extends React.Component{
             passwd:sha1(this.state.passwd),
             userIdentityCode:this.state.identityCode
         }
-        fetch('http://localhost:8085/user/register',{
+        fetch('http://www.chewingtogether.com:8085/user/register',{
             // post提交
             method:"POST",
             headers:{
@@ -84,9 +84,9 @@ class Register extends React.Component{
             <input height="20" type="password" name="password" onChange={this.handleChange}/><br/>
             身份证号:<br/>
             <input height="20" name="identityCode" onChange={this.handleChange}/><br/>
-            <button className="btn-gradient red">重置</button>
-            <button class="btn-gradient green" onClick={()=>this.userRegister()}>提交</button>
-        </div>
+            <input value="提交" class="btn-gradient green" onClick={()=>this.userRegister()}/>
+            <input type="reset" value="重置" className="btn-gradient red"/>
+            </div>
 
             </div>
         )
