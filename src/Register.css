@@ -1,0 +1,44 @@
+.Register {
+    text-align: center;
+}
+
+.Register-div{
+    background-image: url("../public/img/register.jpg");
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+}
+
+.Register-header {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: calc(10px + 2vmin);
+    color: black;
+}
+
+.Register-link {
+    color: #61dafb;
+}
+
+.Register-headline {
+    color: black;
+    font-size: 50px;
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    top: 10%;
+}
+
+.Register-jump {
+    position: absolute;
+    top: 10%;
+    right: 10%;
+}
+
+.Register-form {
+    text-align: center;
+    width: 100%;
+    position: absolute;
+    top: 25%;
+}

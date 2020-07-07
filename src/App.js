@@ -21,7 +21,7 @@ class Login extends React.Component {
 
     userlogin(){
         if (this.state.userMobile === '' || this.state.passwd === ''){
-            alert("用户名或密码不能为空！")
+            alert("手机号码或密码不能为空！")
             return;
         }
         const data ={
