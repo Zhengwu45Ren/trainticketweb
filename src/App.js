@@ -2,6 +2,7 @@ import React from 'react';
 import logo from '../public/img/Index.jpg';
 import './App.css';
 import './buttonstyle.css'
+import {sha1} from './sha1'
 
 class Login extends React.Component {
     constructor(props) {
@@ -25,7 +26,7 @@ class Login extends React.Component {
         }
         const data ={
             userMobile:this.state.userMobile,
-            passwd:this.state.passwd
+            passwd:sha1(this.state.passwd)
         }
         fetch('http://www.chewingtogether.com:8085/user/login',{
             // post提交
