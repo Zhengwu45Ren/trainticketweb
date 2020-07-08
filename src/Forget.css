@@ -1,14 +1,14 @@
-.Register {
+.Forget {
     text-align: center;
 }
 
-.Register-div{
-    background-image: url("../public/img/register.jpg");
+.Forget-div{
+    background-image: url("../public/img/forget.jpg");
     background-size: 100% 100%;
     background-repeat: no-repeat;
 }
 
-.Register-header {
+.Forget-header {
     min-height: 100vh;
     display: flex;
     flex-direction: column;
@@ -17,11 +17,11 @@
     color: black;
 }
 
-.Register-link {
+.Forget-link {
     color: #61dafb;
 }
 
-.Register-headline {
+.Forget-headline {
     color: black;
     font-size: 50px;
     position: absolute;

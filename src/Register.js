@@ -65,11 +65,11 @@ class Register extends React.Component{
         return(
             <div className = "Register-div">
             <header className = "App-header">
-            <a className = "Register-headline">火车订票网站用户注册</a>
+            <a className = "Register-headline">火车订票网站</a>
             </header>
 
             <div className = "App-jump">
-            <button onClick={() => this.props.history.push('')} class="btn-gradient red">返回首页</button>
+            <button onClick={() => this.props.history.push('')} className="btn-gradient red">返回首页</button>
             </div>
 
             <div className = "App-form">
@@ -85,10 +85,9 @@ class Register extends React.Component{
             身份证号:<br/>
             <input height="20" name="identityCode" onChange={this.handleChange}/><br/>
             <button className="btn-gradient red">重置</button>
-            <button class="btn-gradient green" onClick={()=>this.userRegister()}>提交</button>
-        </div>
-
+            <button className="btn-gradient green" onClick={()=>this.userRegister()}>提交</button>
             </div>
+        </div>
         )
     }
 }

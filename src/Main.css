@@ -1,14 +1,14 @@
-.Register {
+.Main {
     text-align: center;
 }
 
-.Register-div{
-    background-image: url("../public/img/register.jpg");
+.Main-div{
+    background-image: url("../public/img/main.jpg");
     background-size: 100% 100%;
     background-repeat: no-repeat;
 }
 
-.Register-header {
+.Main-header {
     min-height: 100vh;
     display: flex;
     flex-direction: column;
@@ -17,15 +17,28 @@
     color: black;
 }
 
-.Register-link {
+.Main-link {
     color: #61dafb;
 }
 
-.Register-headline {
+.Main-headline {
     color: black;
     font-size: 50px;
     position: absolute;
     display: flex;
     flex-direction: column;
-    top: 10%;
+    top: 3%;
+}
+
+.App-jump {
+    position: absolute;
+    top: 3%;
+    right: 10%;
+}
+
+.App-info{
+    color: darkcyan;
+    position: absolute;
+    top: 3%;
+    left: 5%;
 }

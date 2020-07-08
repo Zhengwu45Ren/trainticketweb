@@ -44,7 +44,7 @@ class Login extends React.Component {
                 else{
                     console.log(resdata)
                     alert("登录成功！")
-                    this.props.history.push('Main')
+                    this.props.history.push({pathname:'Main', data: resdata.user})
                 }
             })
     }
