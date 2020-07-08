@@ -8,7 +8,7 @@ class Main extends React.Component{
         this.state = {
             userName:this.props.location.data.userName,
             userMobile: this.props.location.data.userMobile,
-            identityCode: this.props.location.data.identityCode,
+            identityCode: this.props.location.data.userIdentityCode,
             response: []
         };
     }
