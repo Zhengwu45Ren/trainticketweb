@@ -1,14 +1,14 @@
-.Main {
+.Change {
     text-align: center;
 }
 
-.Main-div{
-    background-image: url("../public/img/main.jpg");
+.Change-div{
+    background-image: url("../public/img/change.jpg");
     background-size: 100% 100%;
     background-repeat: no-repeat;
 }
 
-.Main-header {
+.Change-header {
     min-height: 100vh;
     display: flex;
     flex-direction: column;
@@ -17,11 +17,11 @@
     color: black;
 }
 
-.Main-link {
+.Change-link {
     color: #61dafb;
 }
 
-.Main-headline {
+.Change-headline {
     color: black;
     font-size: 50px;
     position: absolute;
@@ -30,15 +30,19 @@
     top: 3%;
 }
 
-.Main-jump {
+.Change-jump {
     position: absolute;
     top: 3%;
     right: 10%;
 }
 
-.Main-info{
-    color: darkcyan;
+.Change-info{
+    color: white;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     position: absolute;
-    top: 3%;
-    left: 5%;
+    top: 15%;
+    font-size: 12px;
 }

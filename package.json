@@ -46,6 +46,7 @@
     "postcss-safe-parser": "4.0.1",
     "react": "^16.13.1",
     "react-app-polyfill": "^1.0.6",
+    "react-bootstrap-validation": "^0.1.11",
     "react-dev-utils": "^10.2.1",
     "react-dom": "^16.13.1",
     "react-router-dom": "^5.2.0",
@@ -136,5 +137,8 @@
     "presets": [
       "react-app"
     ]
+  },
+  "devDependencies": {
+    "antd": "^4.4.1"
   }
 }

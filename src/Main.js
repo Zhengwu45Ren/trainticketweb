@@ -24,12 +24,12 @@ class Main extends React.Component{
             <a className = "Main-headline">个人主页</a>
             </header>
 
-            <div className = "App-jump">
-            <button onClick={() => this.props.history.push('')} className="btn-gradient blue">修改信息</button><br/>
+            <div className = "Main-jump">
+            <button onClick={() => this.props.history.push({pathname : '/Change', data : this.props.location.data})} className="btn-gradient cyan">修改信息</button><br/>
             <button onClick={() => this.props.history.push('')} className="btn-gradient red">退出登录</button>
             </div>
 
-            <div className = "App-info">
+            <div className = "Main-info">
             用户名:{this.state.userName}<br/>
             手机号码:{this.state.userMobile}<br/>
             身份证号:{this.state.identityCode}<br/>
