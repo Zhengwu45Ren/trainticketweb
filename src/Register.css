@@ -8,6 +8,12 @@
     background-repeat: no-repeat;
 }
 
+.Register-forget{
+    background-image: url("../public/img/forget.jpg");
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+}
+
 .Register-header {
     min-height: 100vh;
     display: flex;
