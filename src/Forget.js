@@ -1,6 +1,7 @@
 import React from 'react';
 import './Register.css'
 import './App.css'
+import { message } from 'antd';
 import {sha1} from './sha1'
 
 class Forget extends React.Component{
@@ -22,11 +23,11 @@ class Forget extends React.Component{
     
     userForget(){
         if (this.state.userMobile === '' || this.state.identityCode === ''){
-            alert("手机号码或身份证号不能为空！")
+            message.error("手机号码或身份证号不能为空！")
             return;
         }
         if (this.state.passwd !== this.state.password){
-            alert("两次输入的密码不一致！")
+            message.error("两次输入的密码不一致！")
             return;
         }const data ={
             userName:this.state.userName,
@@ -49,7 +50,7 @@ class Forget extends React.Component{
             }
             else{
                 console.log(resdata)
-                alert("密码已更换为新密码！")
+                message.success("密码已更换为新密码！")
                 this.props.history.push('')
             }
         })

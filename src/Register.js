@@ -1,6 +1,7 @@
 import React from 'react';
 import './Register.css'
 import './App.css'
+import { message } from 'antd';
 import {sha1} from './sha1'
 
 class Register extends React.Component{
@@ -23,15 +24,15 @@ class Register extends React.Component{
 
     userRegister(){
         if (this.state.userMobile === '' || this.state.passwd === ''){
-            alert("手机号码或密码不能为空！")
+            message.error("手机号码或密码不能为空！")
             return;
         }
         if (this.state.identityCode === '' || this.state.userName === ''){
-            alert("个人信息不能为空！")
+            message.error("用户名或身份证号不能为空！")
             return;
         }
         if (this.state.passwd !== this.state.password){
-            alert("两次输入的密码不一致！")
+            message.error("两次输入的密码不一致！")
             return;
         }
         const data ={
@@ -55,7 +56,7 @@ class Register extends React.Component{
             }
             else{
                 console.log(resdata)
-                alert("注册成功！")
+                message.success("注册成功！")
                 this.props.history.push('')
             }
         })
@@ -74,14 +75,14 @@ class Register extends React.Component{
 
             <div className = "App-form">
             <h1>用户注册</h1>
-            用户名:<br/>
-            <input height="20" name="userName" onChange={this.handleChange}/><br/>
             手机号码:<br/>
             <input height="20" name="userMobile" onChange={this.handleChange}/><br/>
             密码:<br/>
             <input height="20" type="password" name="passwd" onChange={this.handleChange}/><br/>
             确认密码:<br/>
             <input height="20" type="password" name="password" onChange={this.handleChange}/><br/>
+            用户名:<br/>
+            <input height="20" name="userName" onChange={this.handleChange}/><br/>
             身份证号:<br/>
             <input height="20" name="identityCode" onChange={this.handleChange}/><br/>
             <button className="btn-gradient red">重置</button>

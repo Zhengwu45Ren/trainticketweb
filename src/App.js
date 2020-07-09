@@ -2,6 +2,7 @@ import React from 'react';
 import logo from '../public/img/Index.jpg';
 import './App.css';
 import './buttonstyle.css'
+import { message } from 'antd';
 import {sha1} from './sha1'
 
 class Login extends React.Component {
@@ -21,7 +22,7 @@ class Login extends React.Component {
 
     userlogin(){
         if (this.state.userMobile === '' || this.state.passwd === ''){
-            alert("手机号码或密码不能为空！")
+            message.error("手机号码或密码不能为空！")
             return;
         }
         const data ={
@@ -43,7 +44,7 @@ class Login extends React.Component {
                 }
                 else{
                     console.log(resdata)
-                    alert("登录成功！")
+                    message.success("登录成功");
                     this.props.history.push({pathname:'Main', data: resdata.user})
                 }
             })
