@@ -60,7 +60,7 @@ class Forget extends React.Component{
         return(
             <div className="Register-forget">
             <header className = "App-header">
-            <a className = "Register-headline">火车订票网站</a>
+            <h1 className = "Register-headline">火车订票网站</h1>
             </header>
 
             <div className = "App-jump">

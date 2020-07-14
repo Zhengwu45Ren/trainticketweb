@@ -9,11 +9,17 @@ class Main extends React.Component{
         super(props);
         this.state = {
             visible: false,
-            userName:this.props.location.data.userName,
-            userMobile: this.props.location.data.userMobile,
-            identityCode: this.props.location.data.userIdentityCode,
+            type: '',
+            baseUserName:this.props.location.data.userName,
+            baseUserMobile: this.props.location.data.userMobile,
+            baseIdentityCode: this.props.location.data.userIdentityCode,
             response: []
         };
+        this.handleChange = this.handleChange.bind(this)
+    }
+
+    handleChange(e) {
+        this.setState({[e.target.name]: e.target.value})
     }
 
     showModal = () => {
@@ -23,14 +29,12 @@ class Main extends React.Component{
     };
 
     handleOk = e => {
-        console.log(e);
         this.setState({
             visible: false,
         });
     };
 
     handleCancel = e => {
-        console.log(e);
         this.setState({
             visible: false,
         });
@@ -41,7 +45,7 @@ class Main extends React.Component{
             <>
             <div className = "Change-div">
             <header className = "Change-header">
-            <a className = "Change-headline">个人主页</a>
+            <h1 className = "Change-headline">个人主页</h1>
             </header>
 
             <div className = "Change-jump">
@@ -49,21 +53,26 @@ class Main extends React.Component{
             </div>
 
             <div className = "Change-info">
-            <p>用户名:{this.state.userName}</p>
-        <Button type="primary" onClick={this.showModal}> Open Modal </Button><br/>
-            <p>手机号码:{this.state.userMobile}</p>
-            <p>身份证号:{this.state.identityCode}</p>
+            <span>用户名:{this.state.baseUserName}
+            &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+            <Button type="primary" onClick={(event)=>{this.showModal();this.setState({type: 'userName'});}}> 修改 </Button>
+            </span>
+            <span>手机号码:{this.state.baseUserMobile}
+            &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+            <Button type="primary" onClick={(event)=>{this.showModal();this.setState({type: 'userMobile'});}}> 修改 </Button>
+            </span>
+            <span>身份证号:{this.state.baseIdentityCode}
+            &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+            <Button type="primary" onClick={(event)=>{this.showModal();this.setState({type: 'identityCode'});}}> 修改 </Button>
+            </span>
             </div>
             </div>
-        <Modal
-        title="Basic Modal"
-        visible={this.state.visible}
-        onOk={this.handleOk}
-        onCancel={this.handleCancel} >
-            <p>Some contents...</p>
-        <p>Some contents...</p>
-        <p>Some contents...</p>
-        </Modal>
+            <Modal title="修改信息" visible={this.state.visible} onOk={this.handleOk} onCancel={this.handleCancel}>
+            <div className = "Change-modal">
+            <p>请输入新的{this.state.type}</p>
+            <input height="20" name = {this.state.type} onChange={this.handleChange}/>
+            </div>
+            </Modal>
         </>
     )
     }

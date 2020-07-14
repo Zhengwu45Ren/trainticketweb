@@ -55,7 +55,7 @@ class Login extends React.Component {
             <div className = "App-div" >
 
             <header className = "App-header">
-            <a className = "App-headline">火车订票网站主页</a>
+            <h1 className = "App-headline">火车订票网站主页</h1>
             </header>
 
             <div className = "App-jump">
@@ -73,7 +73,7 @@ class Login extends React.Component {
             </div>
 
             <footer className = "App-footer">
-            <a>ICP备案号:</a>
+            <h1>ICP备案号:</h1>
             <a href='http://www.beian.miit.gov.cn'>京ICP备19033483号</a>
             </footer>
 

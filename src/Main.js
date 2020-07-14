@@ -21,7 +21,7 @@ class Main extends React.Component{
         return(
             <div className = "Main-div">
             <header className = "Main-header">
-            <a className = "Main-headline">个人主页</a>
+            <h1 className = "Main-headline">个人主页</h1>
             </header>
 
             <div className = "Main-jump">
