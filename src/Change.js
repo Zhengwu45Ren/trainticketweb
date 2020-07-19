@@ -86,18 +86,20 @@ class Main extends React.Component{
             </div>
 
             <div className = "Change-info">
-            <span>用户名:{this.state.baseUserName}
-            &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
-            <Button type="primary" onClick={(event)=>{this.showModal();this.setState({type: 'userName'});}}> 修改 </Button>
-            </span>
-            <span>手机号码:{this.state.baseUserMobile}
-            &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
-            <Button type="primary" onClick={(event)=>{this.showModal();this.setState({type: 'userMobile'});}}> 修改 </Button>
-            </span>
-            <span>身份证号:{this.state.baseIdentityCode}
-            &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
-            <Button type="primary" onClick={(event)=>{this.showModal();this.setState({type: 'identityCode'});}}> 修改 </Button>
-            </span>
+            <table border = "0">
+            <tr>
+            <td> 用户名:{this.state.baseUserName}</td>
+            <td><Button type="primary" onClick={(event)=>{this.showModal();this.setState({type: 'userName'});}}> 修改 </Button></td>
+            </tr>
+            <tr>
+            <td>手机号码:{this.state.baseUserMobile}</td>
+            <td><Button type="primary" onClick={(event)=>{this.showModal();this.setState({type: 'userMobile'});}}> 修改 </Button></td>
+            </tr>
+            <tr>
+            <td>身份证号:{this.state.baseIdentityCode}</td>
+            <td><Button type="primary" onClick={(event)=>{this.showModal();this.setState({type: 'identityCode'});}}> 修改 </Button></td>
+            </tr>
+            </table>
             </div>
             </div>
             <Modal title="修改信息" visible={this.state.visible} onOk={this.handleOk} onCancel={this.handleCancel}>
