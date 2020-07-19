@@ -3,13 +3,18 @@ import { Modal, Button,message } from 'antd';
 import 'antd/dist/antd.css';
 import './Change.css'
 import './App.css'
+import {sha1} from './sha1'
 
 class Main extends React.Component{
     constructor(props) {
         super(props);
         this.state = {
             visible: false,
+            passwdVisible: false,
             type: '',
+            oldPasswd:'',
+            passwd:'',
+            passwdagain:'',
             userName: this.props.location.data.userName,
             userMobile:this.props.location.data.userMobile,
             identityCode:this.props.location.data.userIdentityCode,
@@ -29,6 +34,12 @@ class Main extends React.Component{
     showModal = () => {
         this.setState({
             visible: true,
+        });
+    };
+
+    showPasswdModal = () => {
+        this.setState({
+            passwdVisible: true,
         });
     };
 
@@ -67,9 +78,46 @@ class Main extends React.Component{
         })
     };
 
+    handlePasswdOk = e => {
+        this.setState({
+            passwdVisible: false,
+        });
+        if (this.state.passwd !== this.state.passwdagain){
+            message.error("两次密码不一致！")
+            return;
+        }
+        const passwd ={
+            oldPasswd:sha1(this.state.oldPasswd),
+            newPasswd: sha1(this.state.passwd)
+        }
+        fetch('http://www.chewingtogether.com:8085/user/change/passwd',{
+            // post提交
+            method:"POST",
+            credentials:"include",
+            headers:{
+                "Content-type":"application/json"
+            },
+            body:JSON.stringify(passwd)})
+            .then(res => {
+                return res.json()
+            }).then(resdata => {
+            if(resdata.hasOwnProperty("message")) {
+                alert(resdata.message)
+            }
+            else{
+                console.log(resdata)
+                message.success("修改成功");
+                this.props.history.push({pathname:'Main', data: resdata.user})
+            }
+        })
+    };
+
     handleCancel = e => {
         this.setState({
-            visible: false,
+            visible: false
+        });
+        this.setState({
+            passwdVisible: false
         });
     };
 
@@ -86,7 +134,7 @@ class Main extends React.Component{
             </div>
 
             <div className = "Change-info">
-            <table border = "0">
+            <table border = "0" className = "Change">
             <tr>
             <td> 用户名:{this.state.baseUserName}</td>
             <td><Button type="primary" onClick={(event)=>{this.showModal();this.setState({type: 'userName'});}}> 修改 </Button></td>
@@ -99,6 +147,9 @@ class Main extends React.Component{
             <td>身份证号:{this.state.baseIdentityCode}</td>
             <td><Button type="primary" onClick={(event)=>{this.showModal();this.setState({type: 'identityCode'});}}> 修改 </Button></td>
             </tr>
+            <tr>
+            <td colspan = "2"><Button type="primary" onClick={()=>this.showPasswdModal()}> 修改密码 </Button></td>
+            </tr>
             </table>
             </div>
             </div>
@@ -106,6 +157,16 @@ class Main extends React.Component{
             <div className = "Change-modal">
             <p>请输入新的{this.state.type}</p>
             <input height="20" name = {this.state.type} onChange={this.handleChange}/>
+            </div>
+            </Modal>
+            <Modal title="修改密码" visible={this.state.passwdVisible} onOk={this.handlePasswdOk} onCancel={this.handleCancel}>
+            <div className = "Change-modal">
+            <p>请输入旧密码</p>
+            <input type="password" height="20" name = "oldPasswd" onChange={this.handleChange}/>
+            <p>请输入新密码</p>
+            <input type="password" height="20" name = "passwd" onChange={this.handleChange}/>
+            <p>请确认新密码</p>
+            <input type="password" height="20" name = "passwdagain" onChange={this.handleChange}/>
             </div>
             </Modal>
         </>
