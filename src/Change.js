@@ -1,5 +1,5 @@
-import React, {useState} from 'react';
-import { Modal, Button } from 'antd';
+import React from 'react';
+import { Modal, Button,message } from 'antd';
 import 'antd/dist/antd.css';
 import './Change.css'
 import './App.css'
@@ -10,6 +10,9 @@ class Main extends React.Component{
         this.state = {
             visible: false,
             type: '',
+            userName: this.props.location.data.userName,
+            userMobile:this.props.location.data.userMobile,
+            identityCode:this.props.location.data.userIdentityCode,
             baseUserName:this.props.location.data.userName,
             baseUserMobile: this.props.location.data.userMobile,
             baseIdentityCode: this.props.location.data.userIdentityCode,
@@ -20,6 +23,7 @@ class Main extends React.Component{
 
     handleChange(e) {
         this.setState({[e.target.name]: e.target.value})
+        this.setState({changed: e.target.value})
     }
 
     showModal = () => {
@@ -32,6 +36,35 @@ class Main extends React.Component{
         this.setState({
             visible: false,
         });
+        if (this.state.changed === ''){
+            message.error("修改信息不能为空！")
+            return;
+        }
+        const data ={
+            userName:this.state.userName,
+            userMobile: this.state.userMobile,
+            userIdentityCode: this.state.identityCode
+        }
+        fetch('http://www.chewingtogether.com:8085/user/change/info',{
+            // post提交
+            method:"POST",
+            credentials:"include",
+            headers:{
+                "Content-type":"application/json"
+            },
+            body:JSON.stringify(data)})
+            .then(res => {
+                return res.json()
+            }).then(resdata => {
+            if(resdata.hasOwnProperty("message")) {
+                alert(resdata.message)
+            }
+            else{
+                console.log(resdata)
+                message.success("修改成功");
+                this.props.history.push({pathname:'Main', data: resdata.user})
+            }
+        })
     };
 
     handleCancel = e => {

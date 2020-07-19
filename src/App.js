@@ -1,5 +1,4 @@
 import React from 'react';
-import logo from '../public/img/Index.jpg';
 import './App.css';
 import './buttonstyle.css'
 import { message } from 'antd';
@@ -32,6 +31,7 @@ class Login extends React.Component {
         fetch('http://www.chewingtogether.com:8085/user/login',{
             // post提交
             method:"POST",
+            credentials:"include",
             headers:{
                 "Content-type":"application/json"
             },
