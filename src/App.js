@@ -73,7 +73,6 @@ class Login extends React.Component {
             </div>
 
             <footer className = "App-footer">
-            <h1>ICP备案号:</h1>
             <a href='http://www.beian.miit.gov.cn'>京ICP备19033483号</a>
             </footer>
 
