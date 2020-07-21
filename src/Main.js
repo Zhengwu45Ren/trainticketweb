@@ -1,6 +1,7 @@
 import React from 'react';
 import './Main.css'
 import './App.css'
+import {Divider} from 'antd';
 
 class Main extends React.Component{
     constructor(props) {
@@ -34,6 +35,15 @@ class Main extends React.Component{
             手机号码:{this.state.userMobile}<br/>
             身份证号:{this.state.identityCode}<br/>
             </div>
+
+            <div className = "Main-buy">
+            <button onClick={() => this.props.history.push('Buy')} className="btn-gradient purple">点我去买票</button>
+            </div>
+
+            <div className = "Main-divider">
+            <Divider>已购买车票</Divider>
+            </div>
+
         </div>
         )
     }

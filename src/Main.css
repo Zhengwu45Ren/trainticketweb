@@ -42,3 +42,23 @@
     top: 3%;
     left: 5%;
 }
+
+.Main-buy{
+    width: 100%;
+    display: flex;
+    position: absolute;
+    align-items: center;
+    flex-direction: column;
+    top: 13%;
+}
+
+.Main-divider{
+    width: 100%;
+    position: absolute;
+    top: 20%;
+}
+
+.ant-divider-horizontal.ant-divider-with-text::before,
+.ant-divider-horizontal.ant-divider-with-text::after {
+    border-top: 1px solid black !important;
+}

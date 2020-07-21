@@ -1,0 +1,9 @@
+.Buy {
+    text-align: center;
+}
+
+.Buy-div{
+    background-image: url("../public/img/buy.jpg");
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+}

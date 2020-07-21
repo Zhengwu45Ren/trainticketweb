@@ -5,6 +5,7 @@ import Register from './Register';
 import Forget from './Forget';
 import Main from './Main'
 import Change from './Change'
+import Buy from './Buy'
 
 const BasicRoute = () => (
     <HashRouter>
@@ -14,6 +15,7 @@ const BasicRoute = () => (
     <Route exact path="/Forget" component={Forget}/>
     <Route exact path="/Main" component={Main}/>
     <Route exact path="/Change" component={Change}/>
+    <Route exact path="/Buy" component={Buy}/>
 </Switch>
 </HashRouter>
 );
