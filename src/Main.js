@@ -14,7 +14,7 @@ class Main extends React.Component{
         };
     }
 
-    getPartt(){
+    componentDidMount(){
         alert(this.state.userName)
     }
 

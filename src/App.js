@@ -76,6 +76,10 @@ class Login extends React.Component {
             <a href='http://www.beian.miit.gov.cn'>京ICP备19033483号</a>
             </footer>
 
+            <div className = "App=gongzhonghao">
+            <img src="gongzhonghao.png" width="258" height="258"/>
+            </div>
+
             </div>
         );
     }
