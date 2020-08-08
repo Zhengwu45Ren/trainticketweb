@@ -76,8 +76,9 @@ class Login extends React.Component {
             <a href='http://www.beian.miit.gov.cn'>京ICP备19033483号</a>
             </footer>
 
-            <div className = "App=gongzhonghao">
-            <img src="gongzhonghao.png" width="258" height="258"/>
+            <div className = "App-icon">
+            <p><strong>如有问题，请咨询公众号</strong></p>
+            <img src={require("../public/img/gongzhonghao.png")} width="192" height="192"/>
             </div>
 
             </div>
