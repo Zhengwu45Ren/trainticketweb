@@ -105,7 +105,6 @@ class Main extends React.Component{
                 alert(resdata.message)
             }
             else{
-                console.log(resdata)
                 message.success("修改成功");
                 this.props.history.push({pathname:'Main', data: resdata.user})
             }

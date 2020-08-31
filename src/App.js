@@ -28,7 +28,7 @@ class Login extends React.Component {
             userMobile:this.state.userMobile,
             passwd:sha1(this.state.passwd)
         }
-        fetch('http://www.chewingtogether.com:8085/user/login',{
+        fetch('http://localhost:8085/user/login',{
             // post提交
             method:"POST",
             credentials:"include",
@@ -43,7 +43,6 @@ class Login extends React.Component {
                     alert(resdata.message)
                 }
                 else{
-                    console.log(resdata)
                     message.success("登录成功");
                     this.props.history.push({pathname:'Main', data: resdata.user})
                 }
