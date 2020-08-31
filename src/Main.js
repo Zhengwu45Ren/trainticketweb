@@ -30,7 +30,7 @@ class Main extends React.Component{
     };
 
     componentDidMount(){
-        var baseUrl = 'http://localhost:8085/passenger/searchTicket?';
+        var baseUrl = 'http://www.chewingtogether.com:8085/passenger/searchTicket?';
         if(this.state.startStation !== null){
             baseUrl = baseUrl + 'startStation=' + this.state.startStation + '&'
         }
