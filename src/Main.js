@@ -2,8 +2,7 @@ import React from 'react';
 import './Main.css'
 import './App.css'
 import 'antd/dist/antd.css';
-import {Divider, Table, Button, Modal} from 'antd';
-import { ExclamationCircleOutlined } from '@ant-design/icons';
+import {Divider, Table, Button, Modal, message} from 'antd';
 
 class Main extends React.Component{
     constructor(props) {
@@ -19,7 +18,8 @@ class Main extends React.Component{
             response: [],
             totalCount:0,
             ticketVOList:[],
-            visible: false
+            visible: false,
+            passengerId:0
         };
     }
 
@@ -62,24 +62,40 @@ class Main extends React.Component{
         })
     }
 
-    confirm(){
-        Modal.confirm({
-            title: '确认退票',
-            icon: <ExclamationCircleOutlined />,
-            content: '是否确认退票',
-            okText: '确认',
-            cancelText: '取消',
-            onOk() {
-                console.log('OK');
-            },
-            onCancel() {
-                console.log('Cancel');
+    handleOk = () => {
+        const id ={
+            passengerId:this.state.passengerId
+        }
+        fetch('http://www.chewingtogether.com:8085/passenger/returnTicket',{
+            // post提交
+            method:"POST",
+            credentials:"include",
+            body:JSON.stringify(id),
+            headers:{
+                "Content-type":"application/json"
+            }})
+            .then(res => {
+                return res.json()
+            }).then(resdata => {
+            if(resdata.hasOwnProperty("message")) {
+                alert(resdata.message)
+            } else {
+                this.componentDidMount();
+                this.handleCancel();
+                message.success(" 退票成功");
             }
         })
-    }
+    };
+
+    handleCancel = () => {
+        this.setState({
+            visible: false
+        });
+    };
 
     render(){
         return(
+            <>
             <div className = "Main-div">
             <header className = "Main-header">
             <h1 className = "Main-headline">个人主页</h1>
@@ -109,6 +125,7 @@ class Main extends React.Component{
                     <thead>
                         <tr>
                             <th>车次号</th>
+                            <th>座位号</th>
                             <th>始发站</th>
                             <th>终点站</th>
                             <th>发车时间</th>
@@ -121,11 +138,12 @@ class Main extends React.Component{
                             return (
                                 <tr key={ticketVO.id}>
                                     <td>{ticketVO.trainId}</td>
+                                    <td>{ticketVO.seatNo}</td>
                                     <td>{ticketVO.startStation}</td>
                                     <td>{ticketVO.endStation}</td>
                                     <td>{ticketVO.startTime}</td>
                                     <td>{ticketVO.endTime}</td>
-                                    <td><Button onClick={()=>this.confirm()}>退票</Button></td>
+                                    <td><Button type="primary" onClick={()=> {this.setState({passengerId: ticketVO.id});this.showModal();}}>退票</Button></td>
                                 </tr>
                             )
                         })}
@@ -133,6 +151,12 @@ class Main extends React.Component{
                 </table>
             </div>
         </div>
+        <Modal title="确认退票" visible={this.state.visible} onOk={this.handleOk} onCancel={this.handleCancel}>
+            <div className = "Main-modal">
+                <p>是否确认退票</p>
+            </div>
+        </Modal>
+        </>
         )
     }
 }
