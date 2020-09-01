@@ -2,7 +2,9 @@ import React from 'react';
 import './Main.css'
 import './App.css'
 import 'antd/dist/antd.css';
-import {Divider, Table, Button, Modal, message} from 'antd';
+import moment from 'moment';
+import {Divider, Table, Button, Modal, message, DatePicker, Select} from 'antd';
+const { Option } = Select;
 
 class Main extends React.Component{
     constructor(props) {
@@ -21,6 +23,10 @@ class Main extends React.Component{
             visible: false,
             passengerId:0
         };
+    }
+
+    handleChange(e) {
+        console.log(e._d.getTime());
     }
 
     showModal = () => {
@@ -93,6 +99,14 @@ class Main extends React.Component{
         });
     };
 
+    onStartChange(value) {
+        console.log(`selected ${value}`);
+    }
+
+    onEndChange(value) {
+        console.log(`selected ${value}`);
+    }
+
     render(){
         return(
             <>
@@ -118,6 +132,43 @@ class Main extends React.Component{
 
             <div className = "Main-divider">
             <Divider>已购买车票</Divider>
+            </div>
+
+            <div className = "Main-search">
+                <table border="0">
+                <tbody>
+                <tr>
+                    <td>出发地</td>
+                    <td><Select
+                        showSearch
+                        style={{ width: 150 }}
+                        placeholder="选择出发地"
+                        onChange={this.onStartChange}
+                        filterOption={(input, option) =>
+                            option.children.toLowerCase().indexOf(input.toLowerCase()) >= 0
+                        }>
+                        <Option value="北京">北京</Option>
+                        <Option value="上海">上海</Option>
+                        <Option value="广州">广州</Option>
+                    </Select></td>
+                    <td>目的地</td>
+                    <td><Select
+                        showSearch
+                        style={{ width: 150 }}
+                        placeholder="选择目的地"
+                        onChange={this.onEndChange}
+                        filterOption={(input, option) =>
+                            option.children.toLowerCase().indexOf(input.toLowerCase()) >= 0
+                        }>
+                        <Option value="北京">北京</Option>
+                        <Option value="上海">上海</Option>
+                        <Option value="广州">广州</Option>
+                    </Select></td>
+                    <td>发车日期</td>
+                    <td><DatePicker onChange={this.handleChange}/></td>
+                </tr>
+                </tbody>
+                </table>
             </div>
                 
             <div className = "Main-ticket">

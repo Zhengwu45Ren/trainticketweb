@@ -134,6 +134,7 @@ class Main extends React.Component{
 
             <div className = "Change-info">
             <table border = "0" className = "Change">
+            <tbody>
             <tr>
             <td> 用户名:{this.state.baseUserName}</td>
             <td><Button type="primary" onClick={(event)=>{this.showModal();this.setState({type: 'userName'});}}> 修改 </Button></td>
@@ -149,6 +150,7 @@ class Main extends React.Component{
             <tr>
             <td colspan = "2"><Button type="primary" onClick={()=>this.showPasswdModal()}> 修改密码 </Button></td>
             </tr>
+            </tbody>
             </table>
             </div>
             </div>
