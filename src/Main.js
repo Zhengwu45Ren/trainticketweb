@@ -188,7 +188,7 @@ class Main extends React.Component{
                         { this.state.ticketVOList.map(ticketVO=> {
                             return (
                                 <tr key={ticketVO.id}>
-                                    <td>{ticketVO.trainId}</td>
+                                    <td>{ticketVO.trainType}{ticketVO.trainId}</td>
                                     <td>{ticketVO.seatNo}</td>
                                     <td>{ticketVO.startStation}</td>
                                     <td>{ticketVO.endStation}</td>
