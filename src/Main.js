@@ -16,17 +16,15 @@ class Main extends React.Component{
             startStation:null,
             endStation:null,
             startTime:null,
-            endTime:null,
             response: [],
             totalCount:0,
             ticketVOList:[],
             visible: false,
             passengerId:0
         };
-    }
-
-    handleChange(e) {
-        console.log(e._d.getTime());
+        this.handleChange = this.handleChange.bind(this)
+        this.onStartChange = this.onStartChange.bind(this)
+        this.onEndChange = this.onEndChange.bind(this)
     }
 
     showModal = () => {
@@ -45,9 +43,6 @@ class Main extends React.Component{
         }
         if(this.state.startTime !== null){
             baseUrl = baseUrl + 'startTime=' + this.state.startTime + '&'
-        }
-        if(this.state.endTime !== null){
-            baseUrl = baseUrl + 'endTime=' + this.state.endTime
         }
         fetch(baseUrl,{
             // post提交
@@ -88,7 +83,7 @@ class Main extends React.Component{
             } else {
                 this.componentDidMount();
                 this.handleCancel();
-                message.success(" 退票成功");
+                message.success("退票成功");
             }
         })
     };
@@ -99,12 +94,20 @@ class Main extends React.Component{
         });
     };
 
-    onStartChange(value) {
-        console.log(`selected ${value}`);
+    handleChange(e) {
+        if(e !== null) {
+            this.setState({startTime: e._d.getTime()})
+        }else {
+            this.setState({startTime: null})
+        }
     }
 
-    onEndChange(value) {
-        console.log(`selected ${value}`);
+    onStartChange(e) {
+        this.setState({startStation : e})
+    }
+
+    onEndChange(e) {
+        this.setState({endStation : e})
     }
 
     render(){
@@ -166,6 +169,7 @@ class Main extends React.Component{
                     </Select></td>
                     <td>发车日期</td>
                     <td><DatePicker onChange={this.handleChange}/></td>
+                    <td><Button type="primary" onClick={()=> this.componentDidMount()}>搜索</Button></td>
                 </tr>
                 </tbody>
                 </table>
