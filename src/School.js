@@ -11,22 +11,28 @@ class School extends React.Component{
     }
 
     componentDidMount(){
-        fetch('http://www.chewingtogether.com:8085/school',{
-            // post提交
-            method:"GET",
-            credentials:"include",
-            headers:{
-                "Content-type":"application/json"
-            }})
-            .then(res => {
-                return res.json()
-            }).then(resdata => {
-            if(resdata.hasOwnProperty("message")) {
-                alert(resdata.message)
-            } else {
-                this.setState({getTime: resdata})
-            }
-        })
+        const id = this.props.location.search.substr(4)
+        if(id === "4455") {
+            fetch('http://www.chewingtogether.com:8085/school', {
+                // post提交
+                method: "GET",
+                credentials: "include",
+                headers: {
+                    "Content-type": "application/json"
+                }
+            })
+                .then(res => {
+                    return res.json()
+                }).then(resdata => {
+                if (resdata.hasOwnProperty("message")) {
+                    alert(resdata.message)
+                } else {
+                    this.setState({getTime: resdata})
+                }
+            })
+        }else {
+            this.props.history.push({pathname:'/'})
+        }
     }
 
     render() {
