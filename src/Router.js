@@ -7,6 +7,7 @@ import Main from './Main'
 import Change from './Change'
 import Buy from './Buy'
 import School from './School'
+import BackUp from './BackUp'
 
 const BasicRoute = () => (
     <HashRouter>
@@ -18,6 +19,7 @@ const BasicRoute = () => (
     <Route exact path="/Change" component={Change}/>
     <Route exact path="/Buy" component={Buy}/>
     <Route exact path="/School" component={School}/>
+    <Route exact path="/BackUp" component={BackUp}/>
 </Switch>
 </HashRouter>
 );

@@ -36,3 +36,10 @@
     align-items: center;
     vertical-align: center;
 }
+
+.School-back{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    vertical-align: center;
+}
