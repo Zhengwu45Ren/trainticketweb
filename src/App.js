@@ -72,7 +72,7 @@ class Login extends React.Component {
             </div>
 
             <footer className = "App-footer">
-            <a href='http://www.beian.miit.gov.cn'>京ICP备19033483号</a>
+            <a href='http://beian.miit.gov.cn'>京ICP备19033483号</a>
             </footer>
 
             <div className = "App-icon">
