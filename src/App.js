@@ -54,7 +54,7 @@ class Login extends React.Component {
             <div className = "App-div" >
 
             <header className = "App-header">
-            <h1 className = "App-headline">火车订票网站主页</h1>
+            <h1 className = "App-headline">一起嚼嚼订票主页</h1>
             </header>
 
             <div className = "App-jump">
