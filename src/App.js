@@ -1,8 +1,9 @@
 import React from 'react';
 import './App.css';
 import './buttonstyle.css'
-import { message } from 'antd';
+import { message,Input } from 'antd';
 import {sha1} from './sha1'
+import { EyeInvisibleOutlined, EyeTwoTone } from '@ant-design/icons';
 
 class Login extends React.Component {
     constructor(props) {
@@ -65,8 +66,11 @@ class Login extends React.Component {
 
             <div className = "App-form">
             <h1>登陆入口</h1>
-            手机号码:<input height="20" name = "userMobile" onChange={this.handleChange}/><br/>
-            账户密码:<input type="password" height="20" name = "passwd" onChange={this.handleChange}/><br/>
+            手机号码:<input style={{ width: '15%' }} name = "userMobile" onChange={this.handleChange}/><br/>
+            账户密码:
+                <Input.Password name = "passwd" onChange={this.handleChange} style={{ width: '15%' }}
+                                iconRender={visible => (visible ? <EyeTwoTone /> : <EyeInvisibleOutlined />)}
+                /><br/>
             <button className="btn-gradient red">重置</button>
             <button className="btn-gradient cyan" onClick={()=>this.userlogin()}>提交</button>
             </div>

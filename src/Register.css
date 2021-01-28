@@ -23,6 +23,17 @@
     color: black;
 }
 
+.Register-form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: absolute;
+    top: 25%;
+    font-size: 15px;
+    font-weight: bold;
+}
+
 .Register-link {
     color: #61dafb;
 }

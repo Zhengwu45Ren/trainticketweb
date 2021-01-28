@@ -41,6 +41,7 @@
   width: 100%;
   position: absolute;
   top: 25%;
+  font-weight: bold;
 }
 
 .App-footer{
