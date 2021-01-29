@@ -2,7 +2,7 @@ import React from 'react';
 import './Main.css'
 import './App.css'
 import 'antd/dist/antd.css';
-import moment from 'moment';
+import cookie from 'react-cookies'
 import {Divider, Table, Button, Modal, message, DatePicker, Select} from 'antd';
 const { Option } = Select;
 
@@ -34,6 +34,8 @@ class Main extends React.Component{
     };
 
     componentDidMount(){
+        window.addEventListener("beforeunload",cookie.remove('sentInterval'));
+
         var baseUrl = 'http://www.chewingtogether.com:8085/passenger/searchTicket?';
         if(this.state.startStation !== null){
             baseUrl = baseUrl + 'startStation=' + this.state.startStation + '&'

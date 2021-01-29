@@ -3,6 +3,7 @@ import './Register.css'
 import './App.css'
 import { message,Button } from 'antd';
 import {sha1} from './sha1'
+import cookie from 'react-cookies'
 
 class Register extends React.Component{
     constructor(props) {
@@ -42,7 +43,8 @@ class Register extends React.Component{
             userName:this.state.userName,
             userMobile:this.state.userMobile,
             passwd:sha1(this.state.passwd),
-            userIdentityCode:this.state.identityCode
+            userIdentityCode:this.state.identityCode,
+            verifyCode: this.state.verifyCode
         }
         fetch('http://www.chewingtogether.com:8085/user/register',{
             // post提交
@@ -66,32 +68,41 @@ class Register extends React.Component{
     }
 
     sendSMS(){
-        let maxTime = 60;
-        const data ={
-            userMobile:this.state.userMobile
+        if(this.state.userMobile === ''){
+            message.error('手机号码不能为空！');
+            return;
+        }
+        var data = new FormData();
+        let maxTime;
+        data.append("userMobile", this.state.userMobile);
+        if(cookie.load('sentInterval') !== undefined){
+            maxTime = cookie.load('sentInterval');
+        }else {
+            maxTime = 60;
+            cookie.save('sentInterval', maxTime);
         }
         this.timer = setInterval(() => {
+            maxTime = cookie.load('sentInterval');
             if (maxTime > 0) {
                 --maxTime
                 this.setState({
-                    btnText: '重新获取' + maxTime,
-                    btnBool: true
+                    buttenText: '重新获取(' + maxTime + ')',
+                    buttonStatus: true
                 })
+                cookie.save('sentInterval', maxTime);
             }
             else {
                 this.setState({
-                    btnText: '发送验证码',
-                    btnBool: false
+                    buttenText: '发送验证码',
+                    buttonStatus: false
                 })
+                cookie.remove('sentInterval');
             }
         }, 1000)
-        fetch('http://www.chewingtogether.com:8085/verifyCode/get',{
+        fetch('http://www.chewingtogether.com:8085/user/verifyCode/get',{
             // post提交
             method:"POST",
-            headers:{
-                "Content-type":"application/json"
-            },
-            body:JSON.stringify(data)})
+            body:data})
             .then(res => {
                 return res.json()
             }).then(resdata => {
@@ -100,11 +111,49 @@ class Register extends React.Component{
             }
             else{
                 console.log(resdata)
-                message.success("验证码发送成功！")
-                this.props.history.push('')
+                message.success("验证码已发送")
             }
         })
     }
+
+    backFunc(){
+        message.error('123')
+    }
+
+    componentDidMount(){
+        window.addEventListener('popstate', this.backFunc(), false);
+
+        if(cookie.load('sentInterval') !== undefined){
+            let maxTime = cookie.load('sentInterval');
+            this.setState({
+                buttenText: '重新获取(' + maxTime + ')',
+                buttonStatus: true
+            })
+            this.timer = setInterval(() => {
+                maxTime = cookie.load('sentInterval');
+                if (maxTime > 0) {
+                    --maxTime
+                    this.setState({
+                        buttenText: '重新获取(' + maxTime + ')',
+                        buttonStatus: true
+                    })
+                    cookie.save('sentInterval', maxTime);
+                }
+                else {
+                    this.setState({
+                        buttenText: '发送验证码',
+                        buttonStatus: false
+                    })
+                    cookie.remove('sentInterval');
+                }
+            }, 1000)
+        }
+    }
+
+    componentWillUnmount() {
+        window.removeEventListener('popstate',this.backFunc(), false);
+    }
+
 
     render(){
         return(
@@ -126,7 +175,7 @@ class Register extends React.Component{
                 </tr>
                 <tr>
                     <td>手机验证码</td>
-                    <td><input style={{ width: '30%' }} name="verifyCode" onChange={this.handleChange}/><Button type="primary" onClick={()=>this.sendSMS()} disable={this.state.buttonStatus}> {this.state.buttenText} </Button></td>
+                    <td><input style={{ width: '30%' }} name="verifyCode" onChange={this.handleChange}/><Button type="primary" onClick={()=>this.sendSMS()} disabled={this.state.buttonStatus}> {this.state.buttenText} </Button></td>
                 </tr>
                 <tr>
                     <td>密码:</td>

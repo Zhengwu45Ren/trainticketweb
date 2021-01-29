@@ -50,6 +50,12 @@ class Login extends React.Component {
             })
     }
 
+    onKeyPress = (e) =>{
+        if(e.which === 13) {
+            this.userlogin()
+        }
+    }
+
     render() {
         return (
             <div className = "App-div" >
@@ -66,9 +72,9 @@ class Login extends React.Component {
 
             <div className = "App-form">
             <h1>登陆入口</h1>
-            手机号码:<input style={{ width: '15%' }} name = "userMobile" onChange={this.handleChange}/><br/>
+            手机号码:<input style={{ width: '15%' }} name = "userMobile" onChange={this.handleChange} onKeyPress={this.onKeyPress}/><br/>
             账户密码:
-                <Input.Password name = "passwd" onChange={this.handleChange} style={{ width: '15%' }}
+                <Input.Password name = "passwd" onChange={this.handleChange} onKeyPress={this.onKeyPress} style={{ width: '15%' }}
                                 iconRender={visible => (visible ? <EyeTwoTone /> : <EyeInvisibleOutlined />)}
                 /><br/>
             <button className="btn-gradient red">重置</button>
