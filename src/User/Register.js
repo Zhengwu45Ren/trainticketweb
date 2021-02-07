@@ -2,7 +2,7 @@ import React from 'react';
 import './Register.css'
 import './App.css'
 import { message,Button } from 'antd';
-import {sha1} from './sha1'
+import {sha1} from '../Utils/sha1'
 import cookie from 'react-cookies'
 
 class Register extends React.Component{
@@ -116,13 +116,7 @@ class Register extends React.Component{
         })
     }
 
-    backFunc(){
-        message.error('123')
-    }
-
     componentDidMount(){
-        window.addEventListener('popstate', this.backFunc(), false);
-
         if(cookie.load('sentInterval') !== undefined){
             let maxTime = cookie.load('sentInterval');
             this.setState({
@@ -149,11 +143,6 @@ class Register extends React.Component{
             }, 1000)
         }
     }
-
-    componentWillUnmount() {
-        window.removeEventListener('popstate',this.backFunc(), false);
-    }
-
 
     render(){
         return(

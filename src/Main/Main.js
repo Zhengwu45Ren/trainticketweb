@@ -1,6 +1,6 @@
 import React from 'react';
 import './Main.css'
-import './App.css'
+import '../User/App.css'
 import 'antd/dist/antd.css';
 import cookie from 'react-cookies'
 import {Divider, Table, Button, Modal, message, DatePicker, Select} from 'antd';

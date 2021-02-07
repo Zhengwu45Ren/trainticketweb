@@ -1,8 +1,8 @@
 import React from 'react';
 import './App.css';
-import './buttonstyle.css'
+import '../Utils/buttonstyle.css'
 import { message,Input } from 'antd';
-import {sha1} from './sha1'
+import {sha1} from '../Utils/sha1'
 import { EyeInvisibleOutlined, EyeTwoTone } from '@ant-design/icons';
 
 class Login extends React.Component {
@@ -87,7 +87,7 @@ class Login extends React.Component {
 
             <div className = "App-icon">
             <p><strong>如有问题，请咨询公众号</strong></p>
-            <img src={require("../public/img/gongzhonghao.png")} width="192" height="192"/>
+            <img src={require("../img/gongzhonghao.png")} width="192" height="192"/>
             </div>
 
             </div>

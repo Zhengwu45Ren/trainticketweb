@@ -2,8 +2,8 @@ import React from 'react';
 import { Modal, Button,message } from 'antd';
 import 'antd/dist/antd.css';
 import './Change.css'
-import './App.css'
-import {sha1} from './sha1'
+import '../User/App.css'
+import {sha1} from '../Utils/sha1'
 
 class Main extends React.Component{
     constructor(props) {

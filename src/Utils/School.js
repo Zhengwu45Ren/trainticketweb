@@ -42,20 +42,20 @@ class School extends React.Component{
                 <title>请假外出、返校权限查询通行码</title>
             </Helmet>
             <div className="School-head">
-                <img className="School-div" src={require("../public/img/head.png")}/>
+                <img className="School-div" src={require("../img/head.png")}/>
             </div>
             <div className="School-content">
-                <img className="School-div" src={require("../public/img/uppart.png")}/>
-                <img className="School-div" src={require("../public/img/midpart.png")}/>
+                <img className="School-div" src={require("../img/uppart.png")}/>
+                <img className="School-div" src={require("../img/midpart.png")}/>
             <div className="School-time">
                 <p>{this.state.getTime}</p>
             </div>
             <div>
-                    <img className="School-div" src={require("../public/img/bottompart.png")}/>
+                    <img className="School-div" src={require("../img/bottompart.png")}/>
             </div>
             </div>
             <div className="School-tail">
-                <img className="School-div" src={require("../public/img/tail.png")}/>
+                <img className="School-div" src={require("../img/tail.png")}/>
             </div>
             </>
         );

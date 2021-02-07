@@ -5,7 +5,7 @@ class BackUp extends React.Component{
         return (
             <>
                 <div>
-                    <img className="School-back" src={require("../public/img/cc.PNG")}/>
+                    <img className="School-back" src={require("../img/cc.PNG")}/>
                 </div>
             </>
         );

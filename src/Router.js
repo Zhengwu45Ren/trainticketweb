@@ -1,13 +1,13 @@
 import React from 'react';
 import {HashRouter, Route, Switch} from 'react-router-dom';
-import App from './App';
-import Register from './Register';
-import Forget from './Forget';
-import Main from './Main'
-import Change from './Change'
-import Buy from './Buy'
-import School from './School'
-import BackUp from './BackUp'
+import App from './User/App';
+import Register from './User/Register';
+import Forget from './User/Forget';
+import Main from './Main/Main'
+import Change from './Main/Change'
+import Buy from './Main/Buy'
+import School from './Utils/School'
+import BackUp from './Utils/BackUp'
 
 const BasicRoute = () => (
     <HashRouter>
