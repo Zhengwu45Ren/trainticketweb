@@ -168,7 +168,7 @@ class Forget extends React.Component{
                         </tr>
                         <tr>
                             <td><button className="btn-gradient red">取消</button></td>
-                            <td><button className="btn-gradient green" onClick={()=>this.userRegister()}>提交</button></td>
+                            <td><button className="btn-gradient green" onClick={()=>this.userForget()}>提交</button></td>
                         </tr>
                         </tbody>
                     </table>
