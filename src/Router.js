@@ -8,6 +8,7 @@ import Change from './Main/Change'
 import Buy from './Main/Buy'
 import School from './Utils/School'
 import BackUp from './Utils/BackUp'
+import jtSchool from './Utils/jtSchool'
 
 const BasicRoute = () => (
     <HashRouter>
@@ -20,6 +21,7 @@ const BasicRoute = () => (
     <Route exact path="/Buy" component={Buy}/>
     <Route exact path="/School" component={School}/>
     <Route exact path="/BackUp" component={BackUp}/>
+    <Route exact path="/jtSchool" component={jtSchool}/>
 </Switch>
 </HashRouter>
 );
