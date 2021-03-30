@@ -63,6 +63,7 @@ class jtSchool extends React.Component{
                         <img style={{display:this.state.showPic, width:'100%', height:'100%'}} src={require("../img/sub.png")} />
                     </div>
                     <p className="jtSchool-time">{this.state.getTime}</p>
+                    <p className="jtSchool-last">{this.state.lastTime}</p>
                 </div>
             </>
         );
