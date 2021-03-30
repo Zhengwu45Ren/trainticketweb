@@ -1,12 +1,16 @@
 import React from 'react';
 import Helmet from 'react-helmet';
 import './jtSchool.css'
+import moment from 'moment';
 
 class jtSchool extends React.Component{
     constructor(props) {
         super(props);
         this.state = {
-            getTime:''
+            getTime:'',
+            currentTime:'',
+            lastTime:'',
+            showPic: 'none'
         };
     }
 
@@ -28,6 +32,21 @@ class jtSchool extends React.Component{
                 this.setState({getTime: resdata})
             }
         })
+
+        this.setState({lastTime: moment().subtract('minutes',45).subtract('seconds',9).format('YYYY-MM-DD HH:mm:ss')})
+
+        setInterval(() => {
+            this.setState({currentTime: moment().format('YYYY-MM-DD HH:mm:ss')})
+        }, 1000)
+
+        setInterval(()=>{
+            if (this.state.showPic == 'none') {
+                this.setState({showPic: 'block'})
+            }
+            else if (this.state.showPic == 'block') {
+                this.setState({showPic: 'none'})
+            }
+        },500)
     }
 
     render() {
@@ -36,13 +55,14 @@ class jtSchool extends React.Component{
                 <Helmet>
                     <title>动态码</title>
                 </Helmet>
-                <div className="jtSchool-head">
-                    <p>{this.state.getTime}</p>
+                <div className="jtSchool-topBrand">
+                    <p className="jtSchool-whiteFont">——当前时间：{this.state.currentTime}——</p>
                 </div>
                 <div className="jtSchool-content">
-                    <div className="jtSchool-time">
-                        <p>{this.state.getTime}</p>
+                    <div className="jtSchool-sub">
+                        <img style={{display:this.state.showPic, width:'100%', height:'100%'}} src={require("../img/sub.png")} />
                     </div>
+                    <p className="jtSchool-time">{this.state.getTime}</p>
                 </div>
             </>
         );
