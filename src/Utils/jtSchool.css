@@ -36,14 +36,16 @@
 
 .jtSchool-last{
     color: #448BDA;
-    font-size: 10px;
-    margin-top: 70%;
-    margin-left: 60%;
+    position: absolute;
+    font-size: 15px;
+    top: 70%;
+    left: 60%;
 }
 
 .jtSchool-time{
     color: white;
+    position: absolute;
     font-size: 20px;
-    margin-top: 25%;
-    margin-left: 40%;
+    top: 25%;
+    left: 40%;
 }
