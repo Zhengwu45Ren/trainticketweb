@@ -34,18 +34,18 @@
     height: 9.5%;
 }
 
-.jtSchool-last{
-    color: #448BDA;
-    position: absolute;
-    font-size: 15px;
-    top: 70%;
-    left: 60%;
-}
-
 .jtSchool-time{
     color: white;
     position: absolute;
     font-size: 20px;
-    top: 25%;
-    left: 40%;
+    top: 13%;
+    left: 42%;
+}
+
+.jtSchool-last{
+    color: #448BDA;
+    position: absolute;
+    font-size: 15px;
+    top: 72%;
+    left: 55%;
 }
